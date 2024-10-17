@@ -1,36 +1,53 @@
-name: NodeJS with Gulp
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches: [ "main" ]  # Виконання дій при пуші в гілку main
+    branches: ['main']
+    
   pull_request:
-    branches: [ "main" ]  # Виконання дій при відкритті pull request в гілку main
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  build:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [20.x]  # Ваша версія Node.js
-
     steps:
-    - uses: actions/checkout@v4  # Крок для завантаження файлів з репозиторію
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: Install dependencies
-      run: npm install  # Встановлення залежностей
-
-    - name: Build project
-      run: npm run build:prod  # Виконання команди для продакшн збірки
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3  # Використання дії для деплою на GitHub Pages
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}  # Використання автоматично створеного токену
-        publish_dir: ./dist  # Вказівка на папку з фінальними файлами
-        publish_branch: gh-pages  # Гілка для деплою
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build:prod
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload dist folder
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
