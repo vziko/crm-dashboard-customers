@@ -2,8 +2,6 @@ import WOW from "wow.js";
 import DataTable from 'datatables.net-dt';
 import 'datatables.net-responsive-dt';
 
-//new WOW().init();
-
 let wow = new WOW(
 	{
 		boxClass:     'wow',      // default
@@ -48,10 +46,6 @@ let table = new DataTable('#customers-table', {
 		collapse: false
 	}
 });
-
-table.on( 'draw', function () {
-	console.log( 'Table redrawn' );
-} );
 
 const searchTable = () => {
 	table.search($searchInput.value).draw();
