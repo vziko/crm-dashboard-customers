@@ -5,6 +5,13 @@ on:
     branches: [ "main" ]  # Виконання дій при пуші в гілку main
   pull_request:
     branches: [ "main" ]  # Виконання дій при відкритті pull request в гілку main
+  workflow_dispatch:
+  
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
