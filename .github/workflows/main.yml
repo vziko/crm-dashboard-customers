@@ -29,7 +29,7 @@ jobs:
       run: npm run build:prod  # Виконання команди для продакшн збірки
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3  # Використання дії для деплою на GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4  # Використання дії для деплою на GitHub Pages
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}  # Використання автоматично створеного токену
         publish_dir: ./dist  # Вказівка на папку з фінальними файлами
