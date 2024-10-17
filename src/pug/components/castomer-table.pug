@@ -1,0 +1,21 @@
+div.customer-table
+    table#customers-table
+        thead
+            tr
+                th Customer Name
+                th.min-tablet-l Company
+                th.min-tablet-l Phone Number
+                th.min-tablet-l Email
+                th.min-tablet-l Country
+                th.action.min-tablet-l Status
+        tbody
+            - for (let i = 0; i < 14; i++) // For demonstration
+                each item in customerList
+                    tr.animate__fadeInUp
+                        td.dtr-control=item.name
+                        td=item.company
+                        td=item.phone
+                        td=item.email
+                        td=item.country
+                        td.action
+                            +action(item.status)

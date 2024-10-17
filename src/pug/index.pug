@@ -1,0 +1,17 @@
+include ./data/config
+
+doctype html
+html(lang="en")
+    include ./parts/head
+    body
+        div.wrapper
+            include ./parts/header
+            main.main
+                h3.main__title.wow.animate__fadeIn Hello Evano&nbsp;
+                    img(src="img/head.png")
+                    | ,
+
+                div.main__content
+                    include components/customer-content
+
+        include ./parts/foot

@@ -1,0 +1,171 @@
+.header {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: $headerWidth;
+  min-height: 100vh;
+  padding: 3.6rem 2.8rem 7.6rem;
+
+  background-color: $bgColorPanel;
+
+  &__logo {
+    display: block;
+
+    img {
+      width: 21.7rem;
+      height: auto;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    margin-top: 5.3rem;
+  }
+}
+
+.header-user {
+  display: flex;
+  gap: 1.2rem;
+
+  margin-top: 4rem;
+
+  align-items: center;
+  text-decoration: none;
+
+  &__img {
+    flex: 0 0 4.2rem;
+    @include widthHeight(4.2rem)
+  }
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__name {
+    font-size: 1.4rem;
+    color: $black;
+    @include transition(null, 0.2s);
+
+    .header-user:hover & {
+      color: $mintGreen;
+    }
+  }
+
+  &__position {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: $gray;
+  }
+}
+
+.menu-burger {
+  display: none;
+}
+
+.menu-backdrop {
+  display: none;
+}
+
+@media all and (max-width: 991px) {
+  @mixin open-mobil {
+    .open-mobile-menu & {
+      @content;
+    }
+  }
+
+  .header {
+    flex-direction: row;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    z-index: 1;
+    min-height: 0;
+    height: 8rem;
+    border-bottom: 1px solid transparent;
+
+    @include open-mobil {
+      border-bottom-color: $silver;
+    }
+
+    &__bottom {
+      @include transition();
+      position: fixed;
+      top: 8rem;
+      left: 0;
+
+      margin-top: 0;
+      min-width: 280px;
+      height: calc(100% - 8rem);
+      z-index: 2;
+      padding: 1.5rem 2.5rem 3rem;
+
+      overflow: auto;
+      transform: translateX(-100%);
+      background-color: $bgColorPanel;
+
+      @include open-mobil {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  .menu-burger {
+    @include buttonNoStyles;
+    position: relative;
+    width: 46px;
+    height: 38px;
+    display: flex;
+    padding: 6px;
+    border-radius: 4px;
+    border: solid 2px transparent;
+
+    flex-direction: column;
+    gap: 5px;
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    span {
+      width: 30px;
+      height: 4px;
+      border-radius: 2px;
+      background: $mintGreen;
+
+      @include open-mobil {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        &:first-child {
+          display: block;
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &:last-child {
+          display: block;
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  .menu-backdrop {
+    position: fixed;
+    top: 8rem;
+    height: calc(100% - 8rem);
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    @include open-mobil {
+      display: block;
+    }
+  }
+}

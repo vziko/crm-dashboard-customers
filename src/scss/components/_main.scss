@@ -1,0 +1,52 @@
+.main {
+  min-height: 100vh;
+  top: 0;
+  position: sticky;
+  width: calc(100% - $headerWidth);
+  padding: 4.1rem 9.5rem 7.1rem 7.1rem;
+
+  &__title {
+    font-size: 2.4rem;
+    color: $black;
+    margin-bottom: 5.1rem;
+
+    img {
+      width: 2.4rem;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    padding: 3rem 4rem 4rem;
+    overflow: hidden;
+
+    border-radius: 3rem;
+    background-color: $bgColorPanel;
+    box-shadow: 0 1rem 6rem 0 rgba(226, 236, 249, 0.5);
+  }
+}
+
+@media all and (max-width: 1366px) {
+  .main {
+    padding: 4.1rem 6.5rem 7.1rem 4.1rem;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .main {
+    width: 100%;
+    padding: 3rem 2rem;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .main {
+    &__title {
+      margin-bottom: 3rem;
+    }
+    &__content {
+      padding: 3rem 2rem 4rem;
+      border-radius: 2rem;
+    }
+  }
+}

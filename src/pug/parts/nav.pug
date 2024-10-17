@@ -1,0 +1,14 @@
+nav.header-nav
+    ul
+        each item in navList
+            - let isActive = ''
+            if item.isActive
+                - isActive = 'header-nav__item_active'
+            li.wow.animate__fadeInLeft
+                a.header-nav__item(href="#" class=isActive)
+                    svg.header-nav__icon
+                        use(xlink:href="img/sprites/sprite.svg#" + item.icon)
+                    span=item.title
+                    if item.multi
+                        svg.header-nav__multi
+                            use(xlink:href="img/sprites/sprite.svg#arrow-right")

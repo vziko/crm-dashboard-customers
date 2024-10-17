@@ -1,0 +1,18 @@
+header.header
+    div.header__top
+        a.header__logo.wow.animate__fadeInLeft(href='/')
+            img(src="img/logo.svg")
+
+    div.header__bottom
+        include ./nav
+        a.header-user.wow.animate__fadeInLeft(href='#' data-wow-delay="0.5s")
+            div.header-user__img
+                img(src="img/evano.png")
+            div.header-user__content
+                div.header-user__name Evano
+                div.header-user__position Project Manager
+    button.menu-burger
+        span
+        span
+        span
+    div.menu-backdrop

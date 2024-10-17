@@ -1,0 +1,57 @@
+@use "sass:color";
+
+$htmlFontSize: 10px;
+$htmlFontSize-sm: 8px;
+$headerWidth: 30.6rem;
+
+// Colors
+
+$royalPurple: #5932ea;
+$white: #fff;
+$silver: #b5b7c0;
+$gray: #757575;
+$black: #000;
+$dark: #292d32;
+$coolGray: #9197b3;
+$mintGreen: #16C098;
+$softLavender: #fafbff;
+$charcoalGray: #404b52;
+
+$textColor: $dark;
+
+$colorLink: $mintGreen;
+$colorLinkHover: color.adjust($colorLink, $lightness: -12%);
+
+$bgColorPanel: $white;
+
+$colorNavLink: $coolGray;
+$colorNavLinkHover: $white;
+
+
+// mixins
+
+@mixin transition($property: all, $time: 0.3s, $function: ease) {
+  transition: $property $time $function;
+}
+
+@mixin widthHeight($value) {
+  width: $value;
+  height: $value;
+}
+
+@mixin buttonNoStyles() {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+}
+
+@mixin tablePadding() {
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+}

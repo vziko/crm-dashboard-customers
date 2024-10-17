@@ -1,0 +1,54 @@
+.search {
+  position: relative;
+  width: 21.6rem;
+
+  &__button {
+    @include buttonNoStyles;
+    @include transition(null, 0.2s);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    padding: 0.7rem 0.8rem;
+
+    color: #7e7e7e;
+
+    &:hover {
+      color: $black;
+    }
+
+    svg {
+      @include widthHeight(2.4rem);
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 1rem 2rem 1rem 4rem;
+
+    border-radius: 1rem;
+    border: none;
+    background: $softLavender;
+
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: $dark;
+
+    &::placeholder {
+      color: $silver;
+      opacity: 1;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0.5rem 0 rgba($silver, 0.7);
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  .search {
+    width: 100%;
+  }
+}
