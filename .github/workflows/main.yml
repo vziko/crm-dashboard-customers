@@ -30,7 +30,7 @@ jobs:
 
     - name: Deploy to GitHub Pages
       run: |
-        git config --global user.email "vziko@gmail.com"
+        git config --global user.email "vzikooo@gmail.com"
         git config --global user.name "Vladyslav Olkhovskyi" 
         git add .  
         git commit -m "Deploy to GitHub Pages" || echo "No changes to commit"
