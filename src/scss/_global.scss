@@ -83,6 +83,12 @@ img {
   min-height: 100vh;
 }
 
+@media all and (min-width: 1921px) {
+  html {
+    font-size: $htmlFontSize-xl;
+  }
+}
+
 @media all and (max-width: 1280px) {
   html {
     font-size: $htmlFontSize-sm;
