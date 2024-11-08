@@ -1,7 +1,7 @@
 .header-nav {
   flex: 1 1 auto;
 
-  ul {
+  &__list {
     display: flex;
     flex-direction: column;
     gap: 1.8rem;
@@ -9,19 +9,19 @@
     margin: 0;
 
     list-style: none;
+  }
 
-    li {
-      animation-duration: 0.75s;
-    }
+  &__item {
+    animation-duration: 0.75s;
 
     @for $i from 1 through 25 {
-      li:nth-child(#{$i}) {
+      &:nth-child(#{$i}) {
         animation-delay: 0.08s *$i;
       }
     }
   }
 
-  &__item {
+  &__link {
     display: flex;
     align-items: center;
     gap: 1.4rem;
